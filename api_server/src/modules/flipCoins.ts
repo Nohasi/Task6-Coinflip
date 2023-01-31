@@ -1,4 +1,4 @@
-import coinflipResult from "../tests/coinflipResult";
+import coinflipResult from "../types/coinflipResult";
 
 export const flipCoins = (flips: number, side: string): coinflipResult[] => {
     let resultsContainer = [];

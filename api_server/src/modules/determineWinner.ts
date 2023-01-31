@@ -1,4 +1,4 @@
-import coinflipResult from "../tests/coinflipResult";
+import coinflipResult from "../types/coinflipResult";
 
 export const determineWinner = (flips: number, flippedCoins: coinflipResult[]): string => {
     let winCounter = 0;
