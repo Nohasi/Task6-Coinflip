@@ -1,14 +1,23 @@
 import coinflipResult from "../types/coinflipResult";
 
-export const flipCoins = (flips: number, side: string): coinflipResult[] => {
+export const flipCoins = (flips: number, side: string) => {
     let resultsContainer = [];
     let oneOrZero = 1;
+    let [headsCount, tailsCount] = [0,0];
 
     // encoded heads as 1 and tails as 0
     let targetValue = (side==='heads')? 1 : 0;
     for(let i = 0; i < flips; i++){
         // expression to get either 0 or 1
         oneOrZero = (Math.random()>=0.5)? 1 : 0;
+
+        // Incrementing headsCount or tailsCount based on oneOrZero value
+        if(oneOrZero === 1){
+            headsCount++;
+        }
+        else {
+            tailsCount++
+        }
         resultsContainer.push(
             {
                 target: side,
@@ -19,5 +28,5 @@ export const flipCoins = (flips: number, side: string): coinflipResult[] => {
         );
     }
 
-    return resultsContainer;
+    return {headsCount: headsCount, tailsCount: tailsCount, resultsContainer: resultsContainer};
 }
