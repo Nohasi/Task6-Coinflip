@@ -1,5 +1,5 @@
 import { Request } from "express"
-export const invalidRequest = (req: Request) => {
+export const invalidRequest = (req: Request): string | null => {
 
     // Checking for parameter existence
     if(!('flips' in req.query)){
@@ -23,8 +23,7 @@ export const invalidRequest = (req: Request) => {
     }
 
     // Checking if 'side' is neither heads/head nor tails/tail
-    if(req.query['side'] !== 'heads' && req.query['side'] !== 'head' && 
-       req.query['side'] !== 'tails' && req.query['side'] !== 'tail'){
+    if(req.query['side'] !== 'heads' && req.query['side'] !== 'tails'){
         return '\'side\' should be either \'heads\' or \'tails\'';
     }
 
