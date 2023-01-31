@@ -18,6 +18,7 @@ export const flipCoins = (flips: number, side: string) => {
         else {
             tailsCount++
         }
+        
         resultsContainer.push(
             {
                 target: side,
