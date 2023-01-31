@@ -2,6 +2,7 @@ import { invalidRequest } from "./modules/invalidRequest";
 
 import express = require('express');
 import { flipCoins } from "./modules/flipCoins";
+import { determineWinner } from "./modules/determineWinner";
 
 const app = express();
 
@@ -19,10 +20,13 @@ app.get('/coinflip', (req: express.Request, res: express.Response) => {
         return;
     }
 
+    let flippedCoins = flipCoins(Number(req.query['flips']), String(req.query['side']));
+
     res.status(200);
     res.send({
         status: 200,
-        results: flipCoins(Number(req.query['flips']), String(req.query['side']))
+        result: determineWinner(Number(req.query['flips']), flippedCoins),
+        flips: flippedCoins,
     });
 });
 

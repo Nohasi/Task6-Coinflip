@@ -1,6 +1,6 @@
-import resultsType from "../tests/resultsType";
+import coinflipResult from "../tests/coinflipResult";
 
-export const flipCoins = (flips: number, side: string): resultsType[] => {
+export const flipCoins = (flips: number, side: string): coinflipResult[] => {
     let resultsContainer = [];
     let oneOrZero = 1;
 
