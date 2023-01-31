@@ -20,6 +20,7 @@ app.get('/coinflip', (req: express.Request, res: express.Response) => {
         return;
     }
 
+    // an array of individual flips and their results (win or lose)
     let flippedCoins = flipCoins(Number(req.query['flips']), String(req.query['side']));
 
     res.status(200);
