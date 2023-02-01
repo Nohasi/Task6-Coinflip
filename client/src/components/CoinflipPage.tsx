@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { CoinflipForm } from './CoinflipForm';
+import { FlipsPanel } from './FlipsPanel';
 import { Header } from './Header';
 import { ResultPanel } from './ResultPanel';
 
@@ -40,7 +41,15 @@ export const CoinflipPage = () => {
                 </div>
             </div>
             <div className="container mrgnbtm">
-                {/* TODO: FLIPS TABLE / ERROR PANEL */}
+                {
+                    pageInteraction
+                    ? <FlipsPanel
+                        rounds={rounds}
+                        errorMessage={errorMessage}
+                        errorStatus={errorStatus}
+                      />
+                    : <div/>
+                }
             </div>
         </div>
     );   
