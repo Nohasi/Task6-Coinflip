@@ -7,7 +7,7 @@ export const FlipsTable = (props: tableTypes) => {
     
     return (
         <div className="container">
-        <h2>Results: {props.numOfHeads} heads and {props.numOfTails} tails</h2>
+        <h2>Flips: {props.numOfHeads} heads and {props.numOfTails} tails</h2>
         <table className="table table-bordered table-fixed table-sm same-col-widths">
             <thead>
                 {/* Styling to make all columns the same width */}
