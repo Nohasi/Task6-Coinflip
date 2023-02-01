@@ -1,24 +1,30 @@
 import { Request } from "express"
-export const invalidRequest = (req: Request) => {
+export const invalidRequest = (req: Request): string | null => {
 
-    if(!("sentence" in req.body)){
-        return "'Sentence' parameter was not passed";
+    // Checking for parameter existence
+    if(!('flips' in req.query)){
+        return 'The \'flips\' parameter is not passed';
+    }
+    if(!('side' in req.query)){
+        return 'The \'side\' parameter is not passed';
     }
 
-    if(typeof(req.body.sentence) !== "string"){
-        return "Value passed was not a string";   
+    //Checking for empty params
+    if(req.query.flips === ""){
+        return 'The \'flips\' parameter is empty';
+    }
+    if(req.query.side === ""){
+        return 'The \'side\' parameter is empty';
     }
 
-    if(req.body.sentence === ""){
-        return "Sentence is empty";
-    }
-    
-    if(!/[a-z]/i.test(req.body.sentence)){
-        return "No alphabetical characters were found";
+    // Checking if flips is not a number
+    if(isNaN(Number(req.query['flips']))){
+        return '\'flips\' should be passed as a number';
     }
 
-    if(req.body.sentence.length > 500){
-        return "Text passed is too long";
+    // Checking if 'side' is neither heads/head nor tails/tail
+    if(req.query['side'] !== 'heads' && req.query['side'] !== 'tails'){
+        return '\'side\' should be either \'heads\' or \'tails\'';
     }
 
     return null;
