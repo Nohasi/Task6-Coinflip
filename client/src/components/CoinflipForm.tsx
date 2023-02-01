@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const CoinflipForm = () => {
+
+    let [selectedButton, setSelectedButton] = useState("");
+
+    const radioButtonSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedButton(event.target.value);
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -18,12 +25,18 @@ export const CoinflipForm = () => {
                             <div className="col">
                                 <div className="radio">
                                     <label>
-                                        <input type="radio" value="Heads" />
+                                        <input type="radio" value="Heads"
+                                         onChange={radioButtonSelect}
+                                         checked={selectedButton === "Heads"}
+                                        />
                                         Heads
                                     </label>
                                     &nbsp;&nbsp;&nbsp;
                                     <label>
-                                        <input type="radio" value="Tails" />
+                                        <input type="radio" value="Tails" 
+                                         onChange={radioButtonSelect}
+                                         checked={selectedButton === "Tails"}
+                                        />
                                         Tails
                                     </label>
                                 </div>
