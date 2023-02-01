@@ -1,11 +1,39 @@
 import React, { useState } from "react";
+import formTypes from "../prop_types/formTypes";
+import { getCoinflipResult } from "../services/getCoinflipResult";
 
-export const CoinflipForm = () => {
+export const CoinflipForm = (props: formTypes) => {
 
-    let [selectedButton, setSelectedButton] = useState("");
+        // Input States
+        let [flips, setFlips] = useState('');
+        let [side, setSide] = useState('heads');
 
     const radioButtonSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedButton(event.target.value);
+        setSide(event.target.value);
+    }
+
+    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if(event.target.validity.valid){
+            setFlips(event.target.value);
+        }
+    }
+
+    const getResult = async (event: React.MouseEvent<HTMLElement>) => {
+        event.preventDefault();
+        const response = await getCoinflipResult(flips, side);
+        if(response.status === 200){
+            props.setResult(response.result);
+            props.setRounds(response.flips.resultsContainer);
+            props.setPageInteraction(true);
+            props.setErrorStatus(false);
+            props.setErrorMessage('');
+        }
+        else {
+            props.setPageInteraction(true);
+            props.setErrorStatus(true);
+            props.setErrorMessage(response.error);
+            console.log(`Error: ${response.error}`);
+        }
     }
 
     return (
@@ -17,25 +45,27 @@ export const CoinflipForm = () => {
                         <div className="row">
                             <div className="col">
                                 <input 
-                                    type="text" 
+                                    type="text"
                                     pattern="[0-9]*"
+                                    value={flips}
+                                    onChange={handleTextChange}
                                     placeholder="Enter Number of Flips" 
                                 />
                             </div>
                             <div className="col">
                                 <div className="radio">
                                     <label>
-                                        <input type="radio" value="Heads"
+                                        <input type="radio" value="heads"
                                          onChange={radioButtonSelect}
-                                         checked={selectedButton === "Heads"}
+                                         checked={side === "heads"}
                                         />
                                         Heads
                                     </label>
                                     &nbsp;&nbsp;&nbsp;
                                     <label>
-                                        <input type="radio" value="Tails" 
+                                        <input type="radio" value="tails" 
                                          onChange={radioButtonSelect}
-                                         checked={selectedButton === "Tails"}
+                                         checked={side === "tails"}
                                         />
                                         Tails
                                     </label>
@@ -43,7 +73,7 @@ export const CoinflipForm = () => {
                             </div>
                         </div>
                         <div className="row" style={{paddingTop: "10px"}}>
-                            <button type="submit" className="btn btn-danger">Flip the coin!</button>
+                            <button type="submit" onClick={getResult} className="btn btn-danger">Flip the coin!</button>
                         </div>
                     </form>
                 </div>

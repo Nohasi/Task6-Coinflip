@@ -4,13 +4,27 @@ import { CoinflipForm } from './CoinflipForm';
 import { Header } from './Header';
 
 export const CoinflipPage = () => {
+    // Output States
+    let [result, setResult] = useState('');
+    let [rounds, setRounds] = useState([]);
+
+    let [pageInteraction, setPageInteraction] = useState(false);
+
+    let [errorStatus, setErrorStatus] = useState(false);
+    let [errorMessage, setErrorMessage] = useState('');
     return(
         <div className="App">
             <Header/>
             <div className="container mrgnbtm">
                 <div className="row">
                     <div className="col-md-8">
-                        <CoinflipForm />
+                        <CoinflipForm
+                            setResult={setResult}
+                            setRounds={setRounds}
+                            setPageInteraction={setPageInteraction}
+                            setErrorStatus={setErrorStatus}
+                            setErrorMessage={setErrorMessage}
+                        />
                     </div>
                     <div className="col-md-4">
                         {/* TODO: RESULTS PANEL */}
