@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import { RepeatsPage } from './components/RepeatsPage';
 
 function App() {
   return (
@@ -9,8 +8,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Routes to automatically redirect users */}
-          <Route path="repeat" element={<RepeatsPage/>}/>
-          <Route path="" element={<Navigate to="/repeat"/>}/>
+          <Route path="" element={<Navigate to="/coinflip"/>}/>
         </Routes>
       </BrowserRouter>
     </div>
