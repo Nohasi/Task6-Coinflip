@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { CoinflipForm } from './CoinflipForm';
 import { Header } from './Header';
+import { ResultPanel } from './ResultPanel';
 
 export const CoinflipPage = () => {
     // Output States
@@ -27,7 +28,14 @@ export const CoinflipPage = () => {
                         />
                     </div>
                     <div className="col-md-4">
-                        {/* TODO: RESULTS PANEL */}
+                        {
+                            pageInteraction
+                            ? <ResultPanel
+                                result={result}
+                                errorStatus={errorStatus}
+                              />
+                            : <div/>
+                        }
                     </div>
                 </div>
             </div>

@@ -34,9 +34,9 @@ export const invalidRequest = (req: Request): string | null => {
         return 'Number of flips must be an integer';
     }
 
-    // Added a maximum value of 20 to num of flips
-    if(flipNo > 20){
-        return 'Number of flips must not be larger than 20';
+    // Added a maximum value of 100 to num of flips
+    if(flipNo > 100){
+        return 'Number of flips must not be larger than 100';
     }
 
     // Checking if 'side' is neither heads/head nor tails/tail
