@@ -9,6 +9,9 @@ export const CoinflipPage = () => {
     // Output States
     let [result, setResult] = useState('');
     let [rounds, setRounds] = useState([]);
+    let [numOfHeads, setNumOfHeads] = useState(0);
+    let [numOfTails, setNumOfTails] = useState(0);
+    
 
     let [pageInteraction, setPageInteraction] = useState(false);
 
@@ -26,6 +29,8 @@ export const CoinflipPage = () => {
                             setPageInteraction={setPageInteraction}
                             setErrorStatus={setErrorStatus}
                             setErrorMessage={setErrorMessage}
+                            setNumOfHeads={setNumOfHeads}
+                            setNumOfTails={setNumOfTails}
                         />
                     </div>
                     <div className="col-md-4">
@@ -45,6 +50,8 @@ export const CoinflipPage = () => {
                     pageInteraction
                     ? <FlipsPanel
                         rounds={rounds}
+                        numOfHeads={numOfHeads}
+                        numOfTails={numOfTails}
                         errorMessage={errorMessage}
                         errorStatus={errorStatus}
                       />

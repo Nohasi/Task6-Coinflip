@@ -4,9 +4,9 @@ import { getCoinflipResult } from "../services/getCoinflipResult";
 
 export const CoinflipForm = (props: formTypes) => {
 
-        // Input States
-        let [flips, setFlips] = useState('');
-        let [side, setSide] = useState('heads');
+    // Input States
+    let [flips, setFlips] = useState('');
+    let [side, setSide] = useState('heads');
 
     const radioButtonSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSide(event.target.value);
@@ -24,6 +24,8 @@ export const CoinflipForm = (props: formTypes) => {
         if(response.status === 200){
             props.setResult(response.result);
             props.setRounds(response.flips.resultsContainer);
+            props.setNumOfHeads(response.numOfHeads)
+            props.setNumOfTails(response.numOfTails)
             props.setPageInteraction(true);
             props.setErrorStatus(false);
             props.setErrorMessage('');

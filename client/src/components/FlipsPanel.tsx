@@ -8,7 +8,11 @@ export const FlipsPanel = (props: flipsPanelTypes) => {
         <div className="container">
             { props.errorStatus
               ? <ErrorMessage errorMessage={props.errorMessage} />
-              : <FlipsTable rounds={props.rounds} />
+              : <FlipsTable 
+                  rounds={props.rounds} 
+                  numOfHeads={props.numOfHeads}
+                  numOfTails={props.numOfTails}
+                />
             }
         </div>
     );
