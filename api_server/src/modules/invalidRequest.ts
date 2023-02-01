@@ -17,9 +17,26 @@ export const invalidRequest = (req: Request): string | null => {
         return 'The \'side\' parameter is empty';
     }
 
+    const flipNo = Number(req.query['flips']);
+
     // Checking if flips is not a number
-    if(isNaN(Number(req.query['flips']))){
+    if(isNaN(flipNo)){
         return '\'flips\' should be passed as a number';
+    }
+
+    // Checking if flips is a negative or zero
+    if(flipNo <= 0){
+        return 'Number of flips cannot be a negative number';
+    }
+
+    // Making sure number of flips is an whole number
+    if(!Number.isInteger(flipNo)){
+        return 'Number of flips must be an integer';
+    }
+
+    // Added a maximum value of 20 to num of flips
+    if(flipNo > 20){
+        return 'Number of flips must not be larger than 20';
     }
 
     // Checking if 'side' is neither heads/head nor tails/tail
