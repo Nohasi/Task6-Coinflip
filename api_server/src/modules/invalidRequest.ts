@@ -26,7 +26,7 @@ export const invalidRequest = (req: Request): string | null => {
 
     // Checking if flips is a negative or zero
     if(flipNo <= 0){
-        return 'Number of flips cannot be a negative number';
+        return 'Number of flips cannot be zero or a negative number';
     }
 
     // Making sure number of flips is an whole number
