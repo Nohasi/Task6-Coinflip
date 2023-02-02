@@ -8,19 +8,25 @@ export const CoinflipForm = (props: formTypes) => {
     let [flips, setFlips] = useState('');
     let [side, setSide] = useState('heads');
 
+    // Handles radio button selection
     const radioButtonSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSide(event.target.value);
     }
 
+    // Changes flips value on text change
     const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        // Validation to make sure only numbers go through
         if(event.target.validity.valid){
             setFlips(event.target.value);
         }
     }
 
+
     const getResult = async (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
+        // Calls fetch service
         const response = await getCoinflipResult(flips, side);
+        // if valid, sets output states and makes errorStatus false
         if(response.status === 200){
             props.setResult(response.result);
             props.setRounds(response.flips.resultsContainer);
@@ -30,7 +36,7 @@ export const CoinflipForm = (props: formTypes) => {
             props.setErrorStatus(false);
             props.setErrorMessage('');
         }
-        else {
+        else { // if invalid, sets errorMessage and makes errorStatus true
             props.setPageInteraction(true);
             props.setErrorStatus(true);
             props.setErrorMessage(response.error);

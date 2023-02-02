@@ -10,7 +10,7 @@ export const FlipsTable = (props: tableTypes) => {
         <h2>Flips: {props.numOfHeads} heads and {props.numOfTails} tails</h2>
         <table className="table table-bordered table-fixed table-sm same-col-widths">
             <thead>
-                {/* Styling to make all columns the same width */}
+            {/* Styling to make all columns the same width */}
             <tr className="same-col-widths">
                 <th>Round No.</th>
                 <th>Target</th>
@@ -19,6 +19,7 @@ export const FlipsTable = (props: tableTypes) => {
             </tr>
             </thead>
             <tbody>
+                {/* Calling function to map each round to a row */}
                 {buildTableBody(props.rounds)}
             </tbody>
         </table>

@@ -34,7 +34,8 @@ export const CoinflipPage = () => {
                         />
                     </div>
                     <div className="col-md-4">
-                        {
+                        { 
+                        // If pageInteraction is false, hides panel
                             pageInteraction
                             ? <ResultPanel
                                 result={result}
@@ -47,6 +48,7 @@ export const CoinflipPage = () => {
             </div>
             <div className="container mrgnbtm">
                 {
+                    // If pageInteraction is false, hides panel
                     pageInteraction
                     ? <FlipsPanel
                         rounds={rounds}
