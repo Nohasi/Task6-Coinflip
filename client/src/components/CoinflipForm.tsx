@@ -35,6 +35,7 @@ export const CoinflipForm = (props: formTypes) => {
             props.setPageInteraction(true);
             props.setErrorStatus(false);
             props.setErrorMessage('');
+            props.setResultSide(side);
         }
         else { // if invalid, sets errorMessage and makes errorStatus true
             props.setPageInteraction(true);

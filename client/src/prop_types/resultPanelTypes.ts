@@ -1,4 +1,5 @@
 export default interface resultPanelTypes {
-    result: string
+    resultSide: string,
+    result: string,
     errorStatus: boolean
 }
