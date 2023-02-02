@@ -11,7 +11,7 @@ export const invalidRequest = (req: Request): string | null => {
 
     //Checking for empty params
     if(req.query.flips === ""){
-        return 'The \'flips\' parameter is empty';
+        return 'No value was passed for No. of Flips';
     }
     if(req.query.side === ""){
         return 'The \'side\' parameter is empty';
