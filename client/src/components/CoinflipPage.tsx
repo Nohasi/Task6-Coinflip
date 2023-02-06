@@ -11,6 +11,7 @@ export const CoinflipPage = () => {
     let [rounds, setRounds] = useState([]);
     let [numOfHeads, setNumOfHeads] = useState(0);
     let [numOfTails, setNumOfTails] = useState(0);
+    let [resultSide, setResultSide] = useState('');
     
 
     let [pageInteraction, setPageInteraction] = useState(false);
@@ -24,6 +25,7 @@ export const CoinflipPage = () => {
                 <div className="row">
                     <div className="col-md-8">
                         <CoinflipForm
+                            setResultSide={setResultSide}
                             setResult={setResult}
                             setRounds={setRounds}
                             setPageInteraction={setPageInteraction}
@@ -38,6 +40,7 @@ export const CoinflipPage = () => {
                         // If pageInteraction is false, hides panel
                             pageInteraction
                             ? <ResultPanel
+                                resultSide={resultSide}
                                 result={result}
                                 errorStatus={errorStatus}
                               />
